@@ -3,18 +3,40 @@ var player;
 var inimigo;
 var xplayer= 400;
 var yplayer= 400;
-var xinimigo= 300;
-var yinimigo= 300;
+var xinimigo= 200;
+var yinimigo= 200;
+var gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8,gp9,gp10;
+var fase1Img, fase2Img, fase3Img, fase4Img, fase5Img, fase6Img, fase7Img, fase8Img, fase9Img, fase10Img;
 
+function preload(){
+    fase1Img = loadImage("fase1.png");
+    fase2Img = loadImage("fase2.png");
+    fase3Img = loadImage("fase3.png");
+    fase4Img = loadImage("fase4.png");
+    fase5Img = loadImage("fase5.png");
+    fase6Img = loadImage("fase6.png");
+    fase7Img = loadImage("fase7.png");
+    fase8Img = loadImage("fase8.png");
+    fase9Img = loadImage("fase9.png");
+    fase10Img = loadImage("fase10.png");
+}
 
 
 function setup (){
-    createCanvas (1200,600)
+    createCanvas (1200,600);
+
+    paredesFase3();
+
     player = createSprite (xplayer,yplayer,10,10);
-inimigo = createSprite (xinimigo,yinimigo,10,10);
+    player.shapeColor = "red";
+
+    inimigo = createSprite (xinimigo,yinimigo,10,10);
+    inimigo.shapeColor = "blue";
+
 }
+
 function draw(){
-background("white")
+background(fase3Img);
 if(keyDown ("RIGHT") ){
 player.x+= 2;
 }
@@ -31,7 +53,102 @@ if(keyDown ("DOWN") ){
 player.y+=2;
 }
 
+player.collide(gp3);
+
 drawSprites ()
+}
 
+function paredesFase1(){
+    gp1 = new Group();
+    var p1 = createSprite(150,300,20,500);
+    var p2 = createSprite(300,110,20,140);
+    var p3 = createSprite(300,480,20,140);
+    var p4 = createSprite(1000,300,20,240);
+    var p5 = createSprite(500,300,700,20);
+    var p6 = createSprite(650,180,720,20);
+    var p7 = createSprite(650,410,720,20);
+    var p8 = createSprite(225,50,170,20);
+    var p9 = createSprite(225,550,170,20);
+    gp1.add(p1);
+    gp1.add(p2);
+    gp1.add(p3);
+    gp1.add(p4);
+    gp1.add(p5);
+    gp1.add(p6);
+    gp1.add(p7);
+    gp1.add(p8);
+    gp1.add(p9);
+}
 
+function paredesFase2(){
+    gp2 = new Group();
+    var p1 = createSprite(100,250,20,400);
+    var p2 = createSprite(250,110,20,100);
+    var p3 = createSprite(175,50,170,20);
+    var p4 = createSprite(680,150,850,20);
+    var p5 = createSprite(1100,190,20,100);
+    var p6 = createSprite(1025,250,170,20);
+    var p7 = createSprite(950,350,20,200);
+    var p8 = createSprite(520,440,850,20);
+    var p9 = createSprite(420,220,170,20);
+    var p10 = createSprite(340,320,20,220);
+    var p11 = createSprite(650,250,20,220);
+    
+    gp2.add(p1);
+    gp2.add(p2);
+    gp2.add(p3);
+    gp2.add(p4);
+    gp2.add(p5);
+    gp2.add(p6);
+    gp2.add(p7);
+    gp2.add(p8);
+    gp2.add(p9);
+    gp2.add(p10);
+    gp2.add(p11);
+}
+
+function paredesFase3(){
+    gp3 = new Group();
+    var p1 = createSprite(50,200,20,200);
+    var p2 = createSprite(150,160,20,120);
+    var p3 = createSprite(100,100,120,20);
+    var p4 = createSprite(190,210,100,20);
+    var p5 = createSprite(250,180,20,80);
+    var p6 = createSprite(300,150,100,20);
+    var p7 = createSprite(350,180,20,80);
+    var p8 = createSprite(580,210,480,20);
+    var p9 = createSprite(270,290,450,20);
+    var p10 = createSprite(600,320,20,80);
+    var p11 = createSprite(800,290,390,20);
+    var p12 = createSprite(550,360,120,20);
+    var p13 = createSprite(500,320,20,80);
+    var p14 = createSprite(820,180,20,80);
+    var p15 = createSprite(880,150,120,20);
+    var p16 = createSprite(950,180,20,80);
+    var p17 = createSprite(950,180,20,80);
+    var p18 = createSprite(950,180,20,80);
+    var p19 = createSprite(950,180,20,80);
+    var p20 = createSprite(950,180,20,80);
+    
+    gp3.add(p1);
+    gp3.add(p2);
+    gp3.add(p3);
+    gp3.add(p4);
+    gp3.add(p5);
+    gp3.add(p6);
+    gp3.add(p7);
+    gp3.add(p8);
+    gp3.add(p9);
+    gp3.add(p10);
+    gp3.add(p11);
+    gp3.add(p12);
+    gp3.add(p13);
+    gp3.add(p14);
+    gp3.add(p15);
+    gp3.add(p16);
+    gp3.add(p17);
+    gp3.add(p18);
+    gp3.add(p19);
+    gp3.add(p20);
+    p16.shapeColor = "purple";
 }

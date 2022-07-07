@@ -2,6 +2,11 @@ html, body {
   margin: 0;
   padding: 0;
 }
-canvas {
-  display: block;
-}
+
+canvas{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+  border: 2px solid black;
+  }
+
