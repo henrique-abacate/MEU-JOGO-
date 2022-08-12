@@ -1,25 +1,10 @@
 var parede;
 var player;
 var inimigo;
-var inimigo2;
-var inimigo3;
-var inimigo4;
-var inimigo5;
-var inimigo6;
-var xplayer= 230;
-var yplayer= 500;
-var xinimigo= 170;
-var yinimigo= 240;
-var xinimigo2= 840;
-var yinimigo2= 250;
-var xinimigo3= 500;
-var yinimigo3= 350;
-var xinimigo4= 736;
-var yinimigo4= 350;
-var xinimigo5= 400;
-var yinimigo5= 250;
-var xinimigo6= 600;
-var yinimigo6= 250;
+var xplayer= 400;
+var yplayer= 400;
+var xinimigo= 200;
+var yinimigo= 200;
 var gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8,gp9,gp10;
 var fase1Img, fase2Img, fase3Img, fase4Img, fase5Img, fase6Img, fase7Img, fase8Img, fase9Img, fase10Img;
 
@@ -40,71 +25,36 @@ function preload(){
 function setup (){
     createCanvas (1200,600);
 
-    paredesFase1();
+    paredesFase3();
 
-
-    player = createSprite (xplayer,yplayer,20,20);
+    player = createSprite (xplayer,yplayer,10,10);
     player.shapeColor = "red";
 
-    inimigo = createSprite (xinimigo,yinimigo,20,20);
+    inimigo = createSprite (xinimigo,yinimigo,10,10);
     inimigo.shapeColor = "blue";
-
-    inimigo2 = createSprite (xinimigo2,yinimigo2,20,20);
-    inimigo2.shapeColor = "blue";
-   
-    inimigo3 = createSprite (xinimigo3,yinimigo3,20,20);
-    inimigo3.shapeColor = "blue";
-
-    inimigo4 = createSprite (xinimigo4,yinimigo4,20,20);
-    inimigo4.shapeColor = "blue";
-
-    inimigo5 = createSprite (xinimigo5,yinimigo5,20,20);
-    inimigo5.shapeColor = "blue";
-
-    inimigo6 = createSprite (xinimigo6,yinimigo6,20,20);
-    inimigo6.shapeColor = "blue";
-
-inimigo.velocityX = 10
-inimigo2.velocityY = 6
-inimigo3.velocityY = 6
-inimigo4.velocityY = 6
-inimigo5.velocityY = 6
-inimigo6.velocityY = 6
-
 
 }
 
 function draw(){
-background("white");
+background(fase3Img);
 if(keyDown ("RIGHT") ){
-player.x+= 6;
+player.x+= 2;
 }
 
 if(keyDown ("LEFT") ){
-player.x -=6;
+player.x -=2;
 }
 
 if(keyDown ("UP") ){
-player.y-=6;
+player.y-=2;
 }
 
 if(keyDown ("DOWN") ){
-player.y+=6;
+player.y+=2;
 }
 
-player.collide(gp1);
+player.collide(gp3);
 
-inimigo.bounceOff (gp1);
-inimigo2.bounceOff (gp1);
-inimigo3.bounceOff (gp1);
-inimigo4.bounceOff (gp1);
-inimigo5.bounceOff (gp1);
-inimigo6.bounceOff (gp1);
-
-if (player.isTouching(inimigo)||player.isTouching(inimigo2)||player.isTouching(inimigo3)||player.isTouching(inimigo4)||player.isTouching(inimigo5)||player.isTouching(inimigo6)){
-    player.x =xplayer;
-    player.y = yplayer;
-}
 drawSprites ()
 }
 
