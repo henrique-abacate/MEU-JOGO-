@@ -1,12 +1,29 @@
 var parede;
 var player;
 var inimigo;
-var xplayer= 400;
-var yplayer= 400;
-var xinimigo= 200;
-var yinimigo= 200;
+var inimigo2;
+var inimigo3;
+var inimigo4;
+var inimigo5;
+var inimigo6;
+var xplayer= 230;
+var yplayer= 500;
+var xinimigo= 170;
+var yinimigo= 240;
+var xinimigo2= 840;
+var yinimigo2= 250;
+var xinimigo3= 500;
+var yinimigo3= 350;
+var xinimigo4= 736;
+var yinimigo4= 350;
+var xinimigo5= 400;
+var yinimigo5= 250;
+var xinimigo6= 600;
+var yinimigo6= 250;
 var gp1,gp2,gp3,gp4,gp5,gp6,gp7,gp8,gp9,gp10;
 var fase1Img, fase2Img, fase3Img, fase4Img, fase5Img, fase6Img, fase7Img, fase8Img, fase9Img, fase10Img;
+var verde;
+var gameState=1;
 
 function preload(){
     fase1Img = loadImage("fase1.png");
@@ -25,35 +42,97 @@ function preload(){
 function setup (){
     createCanvas (1200,600);
 
-    paredesFase3();
+    paredesFase2();
+    paredesFase1();
 
-    player = createSprite (xplayer,yplayer,10,10);
+    verde = createSprite (225,120,135,125);
+    verde.shapeColor = "green";
+
+    player = createSprite (xplayer,yplayer,20,20);
     player.shapeColor = "red";
 
-    inimigo = createSprite (xinimigo,yinimigo,10,10);
+    inimigo = createSprite (xinimigo,yinimigo,20,20);
     inimigo.shapeColor = "blue";
+
+    inimigo2 = createSprite (xinimigo2,yinimigo2,20,20);
+    inimigo2.shapeColor = "blue";
+   
+    inimigo3 = createSprite (xinimigo3,yinimigo3,20,20);
+    inimigo3.shapeColor = "blue";
+
+    inimigo4 = createSprite (xinimigo4,yinimigo4,20,20);
+    inimigo4.shapeColor = "blue";
+
+    inimigo5 = createSprite (xinimigo5,yinimigo5,20,20);
+    inimigo5.shapeColor = "blue";
+
+    inimigo6 = createSprite (xinimigo6,yinimigo6,20,20);
+    inimigo6.shapeColor = "blue";
+
+inimigo.velocityX = 10
+inimigo2.velocityY = 6
+inimigo3.velocityY = 6
+inimigo4.velocityY = 6
+inimigo5.velocityY = 6
+inimigo6.velocityY = 6
+
 
 }
 
 function draw(){
-background(fase3Img);
+background("white");
 if(keyDown ("RIGHT") ){
-player.x+= 2;
+player.x+= 6;
 }
 
 if(keyDown ("LEFT") ){
-player.x -=2;
+player.x -=6;
 }
 
 if(keyDown ("UP") ){
-player.y-=2;
+player.y-=6;
 }
 
 if(keyDown ("DOWN") ){
-player.y+=2;
+player.y+=6;
 }
 
-player.collide(gp3);
+if (gameState ==1){
+    player.collide(gp1);
+
+inimigo.bounceOff (gp1);
+inimigo2.bounceOff (gp1);
+inimigo3.bounceOff (gp1);
+inimigo4.bounceOff (gp1);
+inimigo5.bounceOff (gp1);
+inimigo6.bounceOff (gp1);
+}
+
+
+
+if (player.isTouching(inimigo)||player.isTouching(inimigo2)||player.isTouching(inimigo3)||player.isTouching(inimigo4)||player.isTouching(inimigo5)||player.isTouching(inimigo6)){
+    player.x =xplayer;
+    player.y = yplayer;
+}
+if (player.isTouching(verde)){
+gameState = 2
+}
+
+if(gameState ==2 ){
+  gp1.destroyEach();
+    gp2.setColorEach("gray");
+  
+    player.collide(gp2);
+
+    inimigo.bounceOff (gp2);
+    inimigo2.bounceOff (gp2);
+    inimigo3.bounceOff (gp2);
+    inimigo4.bounceOff (gp2);
+    inimigo5.bounceOff (gp2);
+    inimigo6.bounceOff (gp2);
+    player.x =1050;
+    player.y = 200;
+}
 
 drawSprites ()
 }
@@ -105,6 +184,7 @@ function paredesFase2(){
     gp2.add(p9);
     gp2.add(p10);
     gp2.add(p11);
+    gp2.setColorEach ("white");
 }
 
 function paredesFase3(){
